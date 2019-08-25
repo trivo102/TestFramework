@@ -1,8 +1,6 @@
 #import <Foundation/Foundation.h>
 
-@class SharedVideoGame;
-
-@protocol SharedMessage;
+@class SharedJob, SharedUser, SharedVideoGame;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -141,11 +139,34 @@ __attribute__((swift_name("KotlinBoolean")))
 + (instancetype)numberWithBool:(BOOL)value;
 @end;
 
-__attribute__((swift_name("Message")))
-@protocol SharedMessage
-@required
-- (void)start __attribute__((swift_name("start()")));
-- (void)end __attribute__((swift_name("end()")));
+__attribute__((objc_subclassing_restricted))
+__attribute__((swift_name("Job")))
+@interface SharedJob : KotlinBase
+- (instancetype)initWithId:(NSString * _Nullable)id address:(NSString * _Nullable)address company:(NSString * _Nullable)company __attribute__((swift_name("init(id:address:company:)"))) __attribute__((objc_designated_initializer));
+- (NSString *)toText __attribute__((swift_name("toText()")));
+- (NSString * _Nullable)component1 __attribute__((swift_name("component1()")));
+- (NSString * _Nullable)component2 __attribute__((swift_name("component2()")));
+- (NSString * _Nullable)component3 __attribute__((swift_name("component3()")));
+- (SharedJob *)doCopyId:(NSString * _Nullable)id address:(NSString * _Nullable)address company:(NSString * _Nullable)company __attribute__((swift_name("doCopy(id:address:company:)")));
+@property (readonly) NSString * _Nullable id;
+@property (readonly) NSString * _Nullable address;
+@property (readonly) NSString * _Nullable company;
+@end;
+
+__attribute__((objc_subclassing_restricted))
+__attribute__((swift_name("User")))
+@interface SharedUser : KotlinBase
+- (instancetype)initWithId:(NSString * _Nullable)id name:(NSString * _Nullable)name dob:(NSString * _Nullable)dob phoneNumber:(NSString * _Nullable)phoneNumber __attribute__((swift_name("init(id:name:dob:phoneNumber:)"))) __attribute__((objc_designated_initializer));
+- (NSString *)toText __attribute__((swift_name("toText()")));
+- (NSString * _Nullable)component1 __attribute__((swift_name("component1()")));
+- (NSString * _Nullable)component2 __attribute__((swift_name("component2()")));
+- (NSString * _Nullable)component3 __attribute__((swift_name("component3()")));
+- (NSString * _Nullable)component4 __attribute__((swift_name("component4()")));
+- (SharedUser *)doCopyId:(NSString * _Nullable)id name:(NSString * _Nullable)name dob:(NSString * _Nullable)dob phoneNumber:(NSString * _Nullable)phoneNumber __attribute__((swift_name("doCopy(id:name:dob:phoneNumber:)")));
+@property (readonly) NSString * _Nullable id;
+@property (readonly) NSString * _Nullable name;
+@property (readonly) NSString * _Nullable dob;
+@property (readonly) NSString * _Nullable phoneNumber;
 @end;
 
 __attribute__((objc_subclassing_restricted))
@@ -157,24 +178,15 @@ __attribute__((swift_name("VideoGame")))
 - (NSString * _Nullable)component2 __attribute__((swift_name("component2()")));
 - (int32_t)component3 __attribute__((swift_name("component3()")));
 - (SharedVideoGame *)doCopyName:(NSString * _Nullable)name publisher:(NSString * _Nullable)publisher reviewScore:(int32_t)reviewScore __attribute__((swift_name("doCopy(name:publisher:reviewScore:)")));
-@property NSString * _Nullable name __attribute__((swift_name("name")));
-@property NSString * _Nullable publisher __attribute__((swift_name("publisher")));
-@property int32_t reviewScore __attribute__((swift_name("reviewScore")));
+@property (readonly) NSString * _Nullable name;
+@property (readonly) NSString * _Nullable publisher;
+@property (readonly) int32_t reviewScore;
 @end;
 
 __attribute__((objc_subclassing_restricted))
-__attribute__((swift_name("ActualKt")))
-@interface SharedActualKt : KotlinBase
-+ (NSString *)getCurrentDate __attribute__((swift_name("getCurrentDate()")));
-+ (void)abc __attribute__((swift_name("abc()")));
-@end;
-
-__attribute__((objc_subclassing_restricted))
-__attribute__((swift_name("UtilsKt")))
-@interface SharedUtilsKt : KotlinBase
-+ (NSString *)getDate __attribute__((swift_name("getDate()")));
-+ (NSString *)defaultTextColor __attribute__((swift_name("defaultTextColor()")));
-+ (void)getText __attribute__((swift_name("getText()")));
+__attribute__((swift_name("CommonKt")))
+@interface SharedCommonKt : KotlinBase
++ (void)helloWorld __attribute__((swift_name("helloWorld()")));
 @end;
 
 NS_ASSUME_NONNULL_END
